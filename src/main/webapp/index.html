@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body id="app">
+<!--<a href="/ajax01/test01?name=qiao&sex=man">/ajax01/test01?name=qiao&sex=man</a>-->
+
+<button onclick="ajax()">点击发送ajax</button>
+<button id="btn">....jq</button>
+<script src="jquery.min.js"></script>
+<script>
+
+    // 前端<--->后端代理服务器A<--->服务器B
+    // 相当于代理服务器A直接通过浏览器url(刷新了url)访问服务器B
+    function sendRequest(method, path) {
+        let xhr = new XMLHttpRequest()
+        xhr.onloadend = () => console.log(xhr.responseText)
+        xhr.open(method, path, true)
+        xhr.send()
+    }
+    sendRequest("get","test01");
+    sendRequest("post","test01");
+
+    function ajax() {
+        sendRequest("get","test01");
+        sendRequest("post","test01");
+    }
+
+    //1.声明`callback`函数,用于接受后端的数据
+    // function loginHandle(data) {
+    //     console.log(1,data)
+    // }
+
+    // 能动态局部刷新,但并非严格意义上的ajax请求
+    // btn.onclick = () => {
+    //     //2. 创建 script 标签
+    //     const script = document.createElement('script')
+    //
+    //     //3. 设置标签的 src 属性,携带数据发送get请求
+    //     script.src = 'http://127.0.0.1:8081/ajax02/test02?callback=loginHandle&name=morant&num=12'
+    //
+    //     //4. 将 script 插入到文档中
+    //     document.body.appendChild(script)
+    // }
+
+
+    // $.ajax({
+    //     type: "GET",
+    //     url: "http://127.0.0.1:8081/ajax02/test02?name=morant",
+    //     dataType: "jsonp",//指定数据类型
+    //     jsonp: "callback",//指定url回调函数的参数名(默认是callback)
+    //     // 默认,jQuery会自动生成一个随机的回调函数,并且这个回调函数还会自动调用success的回调函数
+    //     jsonpCallback: "loginHandle"//指定回调函数的名字
+    // })
+    // $.ajax({
+    //     type: "GET",
+    //     url: "http://127.0.0.1:8081/ajax02/test02?name=kebo",
+    //     dataType: "jsonp",
+    //     success (data) {
+    //         console.log(data)
+    //     }
+    // })
+    // $.get({
+    //     url: "http://127.0.0.1:8081/ajax02/test02?name=morant",
+    //     dataType: "jsonp",//指定数据类型
+    //     jsonp: "callback",//指定url回调函数的参数名(默认是callback)
+    //     // 默认,jQuery会自动生成一个随机的回调函数,并且这个回调函数还会自动调用success的回调函数
+    //     jsonpCallback: "loginHandle"//指定回调函数的名字
+    // })
+    // $.get({
+    //     url: "http://127.0.0.1:8081/ajax02/test02?name=kebo",
+    //     dataType: "jsonp",
+    //     success (data) {
+    //         console.log(2,data)
+    //     }
+    // })
+</script>
+<script>
+    // let xhr = new XMLHttpRequest()
+    // xhr.onreadystatechange = function () {
+    //     if (this.readyState == XMLHttpRequest.DONE) {// 请求结束
+    //         if (xhr.status == 200) {// 请求成功
+    //             console.log("this.responseType: " + this.responseType)
+    //             if (this.responseType == "document") {
+    //                 let users = this.responseXML.getElementsByTagName("user");
+    //
+    //                 // xml文档数据也当做html文档来检索即可
+    //                 [...users].forEach(user => {
+    //                     let [name, sex] = user.children
+    //                     console.log(`Name: ${name.textContent}, Sex: ${sex.textContent}`);
+    //                 })
+    //             } else {
+    //                 app.innerHTML += this.responseText
+    //             }
+    //         } else {
+    //             alert(this.responseText)
+    //         }
+    //     }
+    // }
+
+    // get请求传输数据
+    // xhr.open("get", "test01?name=乔丹&sex=男", true)
+    // xhr.send()
+
+    // setTimeout(() => {
+    // post请求传输数据
+    // xhr.open("POST", "test01", true)
+    // 不使用<form> 提交数据,则设置请求头模拟 <form> 提交数据
+    // 从 <form> 属性获取 enctype="application/x-www-form-urlencoded"
+    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    //     xhr.send("name=修罗&sex=男")
+    // }, 1000)
+
+    // setTimeout(() => {
+    // 接收xml数据
+    // xhr.open("put", "test01", true)
+    // xhr.responseType = "document"
+    // xhr.send()
+    // }, 2000)
+</script>
+
+</body>
+
+</html>

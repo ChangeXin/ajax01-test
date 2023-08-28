@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <name>张三</name>
+    <sex>男</sex>
+  </user>
+  <user>
+    <name>李四</name>
+    <sex>女</sex>
+  </user>
+  <user>
+    <name>王五</name>
+    <sex>男</sex>
+  </user>
+</users>
