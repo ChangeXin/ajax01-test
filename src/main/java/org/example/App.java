@@ -3,9 +3,7 @@ public class App {
     public static void main(String[] args)  {
         System.out.println("hellowrold");
         System.out.println("hellowrold");
-        System.out.println("hellowrold");
         System.out.println("conflict-hot");
-
-
+        System.out.println("conflict-hot");
     }
 }
