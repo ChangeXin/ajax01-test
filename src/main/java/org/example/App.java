@@ -3,8 +3,6 @@ public class App {
     public static void main(String[] args)  {
         System.out.println("hellowrold");
         System.out.println("hellowrold");
-        System.out.println("hellowrold");
-        System.out.println("conflict-master");
-        System.out.println("conflict-hot");
+     
     }
 }
